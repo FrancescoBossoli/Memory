@@ -22,7 +22,9 @@ var combinations = 0;
 
 var title = document.createElement("h1");
 title.innerHTML = "Memory Game";
-title.style.textAlign = "center";
+document.body.style.display = "flex";
+document.body.style.flexDirection = "column";
+document.body.style.alignItems = "center";
 document.body.insertBefore(title, document.body.children[0]);
 
 function timer() {
