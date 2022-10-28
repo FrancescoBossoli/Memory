@@ -76,7 +76,7 @@ function startGame() {
         picture.onclick = displayIcon;
         grid.appendChild(card).appendChild(picture);
         //picture.innerHTML = arrayShuffle[i];
-        picture.innerHTML = `<img src="../img/${arrayShuffle[i]}.png" style="width:90%; padding:5%">`;    
+        picture.innerHTML = `<img src="assets/img/${arrayShuffle[i]}.png" style="width:90%; padding:5%">`;    
         // grid.innerHTML += `<div><div class="icon" onclick=displayIcon()>${arrayShuffle[i]}</div></div>`;        
     }    
     timer();
