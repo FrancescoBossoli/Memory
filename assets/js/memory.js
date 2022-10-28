@@ -16,6 +16,9 @@ var time = document.querySelector(".timer");
 
 var interval;
 var check = [];
+var recordA = [];
+var recordB = [];
+var recordC = [];
 var seconds = 0;
 var minutes = 0;
 var combinations = 0;
@@ -93,13 +96,13 @@ function displayIcon() {
 
     //mette/toglie la classe show
     this.classList.toggle("show");
-    this.parentElement.style.background = "transparent";                           /*graphic fix*/
-    this.parentElement.style.border = "transparent";                                    /*graphic fix*/
+    this.parentElement.style.background = "transparent";                                            /*graphic fix*/
+    this.parentElement.style.border = "transparent";                                                /*graphic fix*/
     //aggiunge l'oggetto su cui ha cliccato all'array del confronto
     
     arrayComparison.push(this);
 
-    if (check.length != 2) {                                                  /* fix su 2 volte medesima carta */
+    if (check.length != 2) {                                              /* fix su click 2 volte medesima carta */
         check[0] = this.offsetLeft;
         check[1] = this.offsetTop;
     }
@@ -107,7 +110,7 @@ function displayIcon() {
         if (check[0] == this.offsetLeft && check[1] == this.offsetTop) {
             check = [];
             arrayComparison[0].parentElement.style.background = "url(assets/img/back.png)";         /*graphic fix*/
-            arrayComparison[0].parentElement.style.backgroundSize = "cover";                    /*graphic fix*/
+            arrayComparison[0].parentElement.style.backgroundSize = "cover";                        /*graphic fix*/
             arrayComparison = [];
         }
         else {
@@ -133,10 +136,10 @@ function displayIcon() {
             setTimeout(function() {
                 arrayComparison[0].classList.remove("show");
                 arrayComparison[0].parentElement.style.background = "url(assets/img/back.png)";     /*graphic fix*/
-                arrayComparison[0].parentElement.style.backgroundSize = "cover";                /*graphic fix*/
+                arrayComparison[0].parentElement.style.backgroundSize = "cover";                    /*graphic fix*/
                 arrayComparison[1].classList.remove("show");
                 arrayComparison[1].parentElement.style.background = "url(assets/img/back.png)";     /*graphic fix*/
-                arrayComparison[1].parentElement.style.backgroundSize = "cover";                /*graphic fix*/
+                arrayComparison[1].parentElement.style.backgroundSize = "cover";                    /*graphic fix*/
                 icons.forEach(function(item) {
                     item.classList.remove('disabled');
                     for (var i = 0; i < iconsFind.length; i++) {
@@ -147,7 +150,7 @@ function displayIcon() {
             }, 1200);
         }
     }               //una funzione che viene mostrata alla fine quando sono tutte le risposte esatte
-    if (iconsFind.length == arrayAnimali.length) {
+    if (iconsFind.length == arrayAnimali.length) {        
         modal.style.display = "flex";
         if (minutes == 1 && seconds == 1) {
             document.getElementsByTagName("h2")[0].innerHTML = `Congratulazioni! Hai risolto il gioco in: ${minutes} minuto e ${seconds} secondo`;
@@ -162,6 +165,37 @@ function displayIcon() {
             document.getElementsByTagName("h2")[0].innerHTML = `Congratulazioni! Hai risolto il gioco in: ${minutes} minuti e ${seconds} secondi`;
         }
         document.getElementById("tempoTrascorso").innerHTML = `Stavolta hai utilizzato ${combinations} mosse`;
+        if (arrayAnimali.length == 12) {
+            if (recordA == "" || minutes < recordA[0] || (minutes == recordA[0] && seconds < recordA[1])) {
+                recordA[0] = minutes;
+                recordA[1] = seconds;
+            }
+        }
+        else if (arrayAnimali.length == 24) {
+            if (recordB == "" || minutes < recordB[0] || (minutes == recordB[0] && seconds < recordB[1])) {
+                recordB[0] = minutes;
+                recordB[1] = seconds;
+            }
+        }
+        else {
+            if (recordC == "" || minutes < recordC[0] || (minutes == recordC[0] && seconds < recordC[1])) {
+                recordC[0] = minutes;
+                recordC[1] = seconds;
+            }
+        }
+        if (recordA == "" && recordC == "") {
+            document.getElementById("tempoTrascorso").innerHTML += `<br><br>Record attuale: ${recordB[0]} min ${recordB[1]} sec`;
+        }
+        else {
+            document.getElementById("tempoTrascorso").innerHTML += `<br><br>`
+            if (recordA != "") {
+                document.getElementById("tempoTrascorso").innerHTML += `Modalità Facile - Record: ${recordA[0]} min ${recordA[1]} sec<br>`;
+            }
+            document.getElementById("tempoTrascorso").innerHTML += `Modalità Standard - Record: ${recordB[0]} min ${recordB[1]} sec<br>`;
+            if (recordC != "") {
+                document.getElementById("tempoTrascorso").innerHTML += `Modalità Difficile - Record: ${recordC[0]} min ${recordC[1]} sec`;
+            }
+        }
     }
 }
 
