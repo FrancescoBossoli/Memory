@@ -107,7 +107,7 @@ function displayIcon() {
     else {
         if (check[0] == this.offsetLeft && check[1] == this.offsetTop) {
             check = [];
-            arrayComparison[0].parentElement.style.background = "url(../img/back.png)";         /*graphic fix*/
+            arrayComparison[0].parentElement.style.background = "url(assets/img/back.png)";         /*graphic fix*/
             arrayComparison[0].parentElement.style.backgroundSize = "cover";                    /*graphic fix*/
             arrayComparison = [];
         }
@@ -133,10 +133,10 @@ function displayIcon() {
             // con il timeout rimuove  la classe show per nasconderli
             setTimeout(function() {
                 arrayComparison[0].classList.remove("show");
-                arrayComparison[0].parentElement.style.background = "url(../img/back.png)";     /*graphic fix*/
+                arrayComparison[0].parentElement.style.background = "url(assets/img/back.png)";     /*graphic fix*/
                 arrayComparison[0].parentElement.style.backgroundSize = "cover";                /*graphic fix*/
                 arrayComparison[1].classList.remove("show");
-                arrayComparison[1].parentElement.style.background = "url(../img/back.png)";     /*graphic fix*/
+                arrayComparison[1].parentElement.style.background = "url(assets/img/back.png)";     /*graphic fix*/
                 arrayComparison[1].parentElement.style.backgroundSize = "cover";                /*graphic fix*/
                 icons.forEach(function(item) {
                     item.classList.remove('disabled');
