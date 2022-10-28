@@ -2,11 +2,27 @@
     font-family: 'Lexend', sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body > div:first-of-type {
+    background-image: url(../img/bg.jpg);
+    border: 5px solid saddlebrown;
+    background-size: contain;
+}
+
+h1 {
+    margin-block: 0 5px;
+    text-align: center;
+}
+
 .container {
     width: 900px;
     margin: auto;
-    background-image: url(../img/bg.jpg);
-    border: 5px solid saddlebrown;
+    
 }
 
 .text-center {
@@ -39,6 +55,8 @@
 
 .timer {
     padding: 10px 0;
+    color: #f29202;
+    
 }
 
 .icon {
@@ -78,18 +96,19 @@
 
 .button {
     color: white;
+    text-shadow: 2px 2px 2px dimgray;
     font-size: 22px;
     text-align: center;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     padding: 10px;
-    background-color: #b80adbdc;
-    border: 1px solid #3889c4;
+    background-color: #f2cb02;
+    border: 1px solid #494b41;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: #16486c;
+    background-color: #e65d0e;
     border: none;
 }
 
