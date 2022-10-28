@@ -1,0 +1,158 @@
+* {
+    font-family: 'Lexend', sans-serif;
+}
+
+.container {
+    width: 900px;
+    margin: auto;
+    background-image: url(../img/bg.jpg);
+    border: 5px solid saddlebrown;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.icon-grid {
+/* flex! */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.show {
+/* visibilità e opacità */
+    visibility:visible;
+    opacity: 100;
+}
+
+#griglia>div {
+    width:12%;
+    margin:2%;
+    background: url(../img/back.png);
+    background-size: cover;
+    /*background-color: #b80adbdc;
+    border: 1px inset #dfb749;*/
+    border-radius: 10px;
+}
+
+.timer {
+    padding: 10px 0;
+}
+
+.icon {
+    font-size: 80px;
+    text-align: center;
+    visibility: visible !important;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: wait;
+}
+
+.show {
+    animation: rotazione-carta;
+    animation-duration: 2.5s;
+    background-color: white;
+    /*border: 1px solid #3889c4;           fa oscillare il tavolo                             */ 
+    border-radius: 10px;
+    opacity:100;
+}
+
+.find {
+    animation: indovinato;
+    animation-duration: .5s;
+    background-color: rgba(247, 212, 16, 0.56);
+    /*border: 1px solid #3889c4;           fa oscillare il tavolo                             */
+    border-radius: 10px;
+}
+
+.button {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #b80adbdc;
+    border: 1px solid #3889c4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #16486c;
+    border: none;
+}
+
+#modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+
+#modal.active {
+    display: flex;
+}
+
+#modal h2 {
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 400px;
+    }
+    #griglia>div {
+        margin: 2%;
+        width: 20%;
+    }
+    .icon {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        width: 230px;
+    }
+    #griglia>div {
+        margin: 5px 5px;
+        width: 40px;
+        height: 40px;
+    }
+    .icon {
+        font-size: 20px;
+    }
+}
+
+@keyframes indovinato { /* animazione quando si indovina */
+    from {  transform: rotate(0deg);
+    }
+    to {    transform: rotate(720deg); 
+    }
+}
+
+@keyframes rotazione-carta { /* animazione quando ruota la carta */
+    from {transform:perspective(200px); transform:rotateY(720deg);
+    }
+    50% {transform:perspective(200px); transform:rotateY(-10deg);
+    }
+    to {transform:perspective(200px); transform:rotateY(0deg);
+    }
+}
